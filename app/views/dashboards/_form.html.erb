@@ -1,6 +1,6 @@
 <%= form_with url: "/", class: 'row', method: :get do |form| %>
   <div class="col-11">
-    <%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: "Zipcode" %>
+    <%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: "Enter your Zipcode", required: true %>
   </div>
   <div class="col-1">
     <button type="submit" class="btn btn-dark">
