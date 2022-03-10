@@ -1,8 +1,8 @@
 class WeatherGetter
-  API_KEY = 'e155ba888319d33e0b85dec3fa93ef64'
-  API_URL = "https://api.openweathermap.org/data/2.5/weather"
-  DEFAULT_CACHE_EXPIRATION_TIME = 30.minutes
-  DEFAULT_OPTIONS = {units: 'metric'}
+  API_KEY = ENV['WEATHER_API_KEY']
+  API_URL = ENV['WEATHER_API_URL']
+  DEFAULT_CACHE_EXPIRATION_TIME = ENV['WEATHER_CACHE_EXPIRATION_LIMIT_IN_MINUTES'].to_i.minutes
+  DEFAULT_OPTIONS = {units: ENV['WEATHER_DEFAULT_UNIT']}
 
   def self.call(searchKey, searchValue, options = DEFAULT_OPTIONS)
     return OpenStruct.new(success?: false) if searchValue.blank? || searchKey.blank?
