@@ -1,0 +1,18 @@
+<div class="card m-5 p-2">
+  <div class="row g-2 m-4">
+    <%= render 'form' %>
+  </div>
+
+  <div class="row g-0">
+    <% if @data.result %>
+      <%= render 'weather_info' %>
+    <% elsif @data.error %>
+      <div class="alert alert-danger" role="alert">
+        <%= "We were not able to pull the info: #{@data.error}. Please try again." %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script>
+    document.body.style.background = "url(\"https://source.unsplash.com/random/1600x900/?landscape,<%=@data&.result&.dig("name") %>\") no-repeat center center fixed";
+</script>

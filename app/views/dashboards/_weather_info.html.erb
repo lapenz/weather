@@ -1,0 +1,37 @@
+<div class="col-md-4">
+  <div class="row">
+    <div class="col-12 text-center">
+      <img src="http://openweathermap.org/img/wn/<%= @data.result["weather"][0]["icon"] %>@4x.png" class="img-fluid rounded-start">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center text-capitalize fs-5 px-2"><%= @data.result["weather"][0]["description"] %></div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+      <p class="text-center">L:<%= @data.result["main"]["temp_min"] %>° H:<%= @data.result["main"]["temp_max"] %>°</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="card-body">
+    <h1 class="card-title"><%= @data.result.dig("name") %></h1>
+    <p class="fs-1"><%= @data.result["main"]["temp"] %>°</p>
+    <p class="fs-5">Feels like <%= @data.result["main"]["feels_like"] %>°</p>
+    <div class="row g-0 mb-3">
+      <div class="col-md-4">
+        Pressure: <%= @data.result["main"]["pressure"] %>
+      </div>
+      <div class="col-md-4">
+        Visibility: <%= @data.result["visibility"] %>
+      </div>
+      <div class="col-md-4">
+        Humidity: <%= @data.result["main"]["humidity"] %>%
+      </div>
+    </div>
+
+    <p><small class="text-muted"><%= @data.cache_data? ? 'Cached data' : 'Live data' %></small></p>
+  </div>
+</div>
