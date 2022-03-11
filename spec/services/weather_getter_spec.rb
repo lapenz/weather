@@ -11,8 +11,8 @@ RSpec.describe WeatherGetter do
   describe '#call' do
     context 'good weather response not cached' do
       before do
-        allow(subject).to receive(:get_cached_result).and_return response
-        allow(subject).to receive(:exist_in_cache?).and_return false
+        allow(CacheManager).to receive(:get_value).and_return response
+        allow(CacheManager).to receive(:exist_in_cache?).and_return false
       end
 
       it 'returns the weather data' do
@@ -25,8 +25,8 @@ RSpec.describe WeatherGetter do
 
     context 'good weather response cached' do
       before do
-        allow(subject).to receive(:get_cached_result).and_return response
-        allow(subject).to receive(:exist_in_cache?).and_return true
+        allow(CacheManager).to receive(:get_value).and_return response
+        allow(CacheManager).to receive(:exist_in_cache?).and_return true
       end
 
       it 'returns the weather data' do
@@ -48,7 +48,7 @@ RSpec.describe WeatherGetter do
 
     context 'http error response' do
       before do
-        allow(subject).to receive(:get_cached_result).and_raise http_error_response
+        allow(CacheManager).to receive(:get_value).and_raise http_error_response
       end
 
       it 'returns the weather data' do

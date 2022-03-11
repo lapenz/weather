@@ -3,6 +3,7 @@
     <%= render 'form' %>
   </div>
 
+  <!-- Some error handling in case we have an issue connecting to the api or passing a wrong param-->
   <div class="row g-0">
     <% if @data.success? && @data.result %>
       <%= render 'weather_info' %>
@@ -13,6 +14,8 @@
     <% end %>
   </div>
 </div>
+
+<!--This little JS for making the background nice and according to the city being displayed-->
 <script>
     document.body.style.background = "url(\"https://source.unsplash.com/random/1600x900/?landscape,<%=@data&.result&.dig("name") %>\") no-repeat center center fixed";
 </script>
